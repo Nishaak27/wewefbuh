@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Creative Resume - John Doe</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+&nbsp;
+&nbsp;
+
+  :root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --accent-color: #ff6a00;
+    --accent-color-2: #22d1ee;
+    --accent-color-3: #ff4081;
+    --background-dark: #0f0f23;
+    --background-light: #1c1c44;
+    --background-accent-light: #251f3f;
+    --text-light: #e0e0f8;
+    --text-muted: #8888aa;
+  }
+&nbsp;
+&nbsp;
+
+  * {
+    box-sizing: border-box;
+  }
+&nbsp;
+&nbsp;
+
+  body, html {
+    margin: 0; padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    overflow-x: hidden;
+  }
+&nbsp;
+&nbsp;
+
+  #app {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+&nbsp;
+&nbsp;
+
+  /* Left Profile Panel with diagonal background */
+  .profile-panel {
+    flex: 1 1 320px;
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);
+    position: relative;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 3rem 5rem 4rem;
+    box-shadow: 4px 0 25px rgba(0,0,0,0.5);
+  }
+&nbsp;
+&nbsp;
+
+  .profile-panel::after {
+    content: "";
+    position: absolute;
+    bottom: 4rem;
+    left: 3rem;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    filter: blur(40px);
+    z-index: 0;
+  }
+&nbsp;
+&nbsp;
+
+  .profile-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.7);
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    position: relative;
+    z-index: 1;
+  }
+&nbsp;
+&nbsp;
+
+  h1 {
+    margin: 2rem 0 0.5rem;
+    font-size: 3.4rem;
+    letter-spacing: 2.5px;
+  }
+&nbsp;
+&nbsp;
+
+  h2 {
+    font-weight: 300;
+    font-size: 1.6rem;
+    opacity: 0.9;
+    letter-spacing: 1.4px;
+    margin-top: 0;
+  }
+&nbsp;
+&nbsp;
+
+  .contact-info {
+    font-size: 1.05rem;
+    margin-top: 3rem;
+    width: 100%;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.8;
+  }
+  .contact-info span {
+    display: block;
+    margin: 1.2rem 0;
+  }
+  .contact-info a {
+    color: #fff;
+    text-decoration: underline;
+  }
+&nbsp;
+&nbsp;
+
+  /* Right Content Panel */
+  .content-panel {
+    flex: 2;
+    background: var(--background-dark);
+    padding: 4rem 5rem 5rem 5rem;
+    overflow-y: auto;
+    box-shadow: inset 10px 0 60px rgba(0,0,0,0.7);
+  }
+&nbsp;
+&nbsp;
+
+  /* Section with diagonal top border */
+  section {
+    margin-bottom: 4rem;
+    position: relative;
+  }
+  section::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 70px;
+    height: 30px;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  }
+  section h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 1.6rem;
+    position: relative;
+    padding-left: 32px;
+    user-select: none;
+  }
+&nbsp;
+&nbsp;
+
+  /* Unique section headers with icons and colors */
+  section#summary::before {
+    background: var(--accent-color);
+    content: "💡";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    font-size: 1.8rem;
+  }
+  section#skills::before {
+    background: var(--accent-color-2);
+    content: "🛠️";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    font-size: 1.8rem;
+  }
+  section#experience::before {
+    background: var(--accent-color);
+    content: "💼";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    font-size: 1.8rem;
+  }
+  section#education::before {
+    background: var(--accent-color-2);
+    content: "🎓";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    font-size: 1.8rem;
+  }
+  section#projects::before {
+    background: var(--accent-color-3);
+    content: "🚀";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    font-size: 1.8rem;
+  }
+&nbsp;
+&nbsp;
+
+  /* Summary - clean style */
+  #summary p {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+&nbsp;
+&nbsp;
+
+  /* Animated Skill bars */
+  #skills {
+    background: var(--background-accent-light);
+    padding: 2rem 2.6rem;
+    border-radius: 20px;
+    box-shadow: 0 0 20px var(--accent-color-2);
+  }
+  .skill-bar-container {
+    margin-bottom: 1.5rem;
+  }
+  .skill-label {
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    color: var(--accent-color-2);
+  }
+  .skill-bar {
+    background: var(--background-dark);
+    height: 18px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 0.6rem;
+    box-shadow: inset 0 0 8px #0f3c48aa;
+  }
+  .skill-bar > div {
+    height: 18px;
+    background: var(--accent-color-2);
+    width: 0;
+    border-radius: 20px;
+    transition: width 1.8s ease-in-out;
+    box-shadow: 0 0 14px var(--accent-color-2);
+  }
+&nbsp;
+&nbsp;
+
+  /* Work Experience cards */
+  #experience {
+    background: var(--background-accent-light);
+    padding: 2.4rem 3rem;
+    border-radius: 22px;
+    box-shadow: 0 0 25px var(--accent-color);
+    user-select: none;
+  }
+  .exp-card {
+    background: var(--background-dark);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.8rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 18px rgba(255,106,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .exp-card:hover, .exp-card:focus-within {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(255,106,0,0.7);
+    outline: none;
+    background: #2a1f1a;
+  }
+  .exp-card h4 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1.3rem;
+    color: var(--accent-color);
+  }
+  .exp-card span {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+  .exp-card p {
+    margin-top: 0.6rem;
+    font-size: 1.05rem;
+    color: #f0d3bb;
+    line-height: 1.5;
+  }
+&nbsp;
+&nbsp;
+
+  /* Education vertical timeline */
+  #education {
+    padding-left: 2rem;
+    border-left: 5px solid var(--accent-color-2);
+    user-select: none;
+  }
+  .edu-item {
+    position: relative;
+    margin-bottom: 2.8rem;
+    padding-left: 2.6rem;
+  }
+  .edu-item:last-child {
+    margin-bottom: 0;
+  }
+  .edu-item::before {
+    content: "🎓";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    font-size: 2rem;
+    color: var(--accent-color-2);
+    text-shadow: 0 0 6px var(--accent-color-2);
+  }
+  .edu-item h4 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1.35rem;
+    color: var(--accent-color-2);
+  }
+  .edu-item span {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+  .edu-item p {
+    margin-top: 0.6rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #a6cce5;
+    font-weight: 300;
+  }
+&nbsp;
+&nbsp;
+
+  /* Projects & Achievements gradient cards */
+  #projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2.8rem;
+    user-select: none;
+  }
+  .project-card {
+    background: linear-gradient(135deg, var(--accent-color-3), #a4508b);
+    padding: 1.8rem 2rem;
+    border-radius: 24px;
+    box-shadow: 0 0 30px var(--accent-color-3);
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover, .project-card:focus-within {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 60px var(--accent-color-3);
+    outline: none;
+    background: linear-gradient(135deg, #ff84a2, #cc5a7f);
+  }
+  .project-card h5 {
+    margin-top: 0;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-shadow: 0 0 6px var(--accent-color-3);
+  }
+  .project-card p {
+    margin-top: auto;
+    font-size: 1.1rem;
+    line-height: 1.45;
+  }
+&nbsp;
+&nbsp;
+
+  /* Scrollbar styling for content panel */
+  .content-panel::-webkit-scrollbar {
+    width: 12px;
+  }
+  .content-panel::-webkit-scrollbar-track {
+    background: var(--background-dark);
+  }
+  .content-panel::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 20px;
+  }
+&nbsp;
+&nbsp;
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1.6rem 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    background: var(--background-light);
+    box-shadow: 0 -2px 10px rgba(101, 115, 255, 0.3);
+    letter-spacing: 1px;
+    user-select: none;
+  }
+  footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+&nbsp;
+&nbsp;
+
+  /* Responsive adjustments */
+  @media (max-width: 900px) {
+    #app {
+      flex-direction: column;
+      height: auto;
+    }
+    .profile-panel {
+      clip-path: none;
+      flex: none;
+      height: 420px;
+      padding: 3rem 3rem 4rem 3rem;
+      border-bottom-left-radius: 36px;
+      border-bottom-right-radius: 36px;
+      box-shadow: none;
+    }
+    .content-panel {
+      height: auto;
+      padding: 3rem 4rem 4rem 4rem;
+    }
+    section::before {
+      width: 55px;
+      height: 20px;
+      top: -25px;
+    }
+    #projects {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  @media (max-width: 500px) {
+    .profile-photo {
+      width: 130px;
+      height: 130px;
+    }
+    h1 {
+      font-size: 2.6rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+    }
+    .content-panel {
+      padding: 2rem 3rem 3rem 3rem;
+    }
+  }
+&nbsp;
+&nbsp;
+
+</style>
+</head>
+<body>
+&nbsp;
+&nbsp;
+
+<div id="app" role="main" aria-label="Creative resume of John Doe">
+&nbsp;
+&nbsp;
+
+  <aside class="profile-panel" aria-label="Profile and contact information">
+    <img alt="John Doe photo" class="profile-photo" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=140&q=80" />
+    <h1>John Doe</h1>
+    <h2>Full Stack Developer</h2>
+    <div class="contact-info">
+      <span>📞 <a href="tel:+12345678901">+1 234 567 8901</a></span>
+      <span>✉️ <a href="mailto:john.doe@email.com">john.doe@email.com</a></span>
+      <span>🌐 <a href="https://johndoe.dev" target="_blank" rel="noopener">johndoe.dev</a></span>
+      <span>📍 San Francisco, CA</span>
+    </div>
+  </aside>
+&nbsp;
+&nbsp;
+
+  <section class="content-panel">
+&nbsp;
+&nbsp;
+
+    <section id="summary" aria-label="Professional Summary">
+      <h3>Summary</h3>
+      <p>Experienced full stack developer with 6+ years creating scalable and performant web apps. Skilled in React, Node.js, and cloud architectures with a passion for clean design and innovative solutions.</p>
+    </section>
+&nbsp;
+&nbsp;
+
+    <section id="skills" aria-label="Skills">
+      <h3>Skills</h3>
+      <div id="skills-container">
+        <div class="skill-bar-container">
+          <div class="skill-label"><span>JavaScript</span><span>90%</span></div>
+          <div class="skill-bar"><div tabindex="0" style="width:0%" class="skill-level" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div></div>
+        </div>
+        <div class="skill-bar-container">
+          <div class="skill-label"><span>React.js</span><span>88%</span></div>
+          <div class="skill-bar"><div tabindex="0" style="width:0%" class="skill-level" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div></div>
+        </div>
+        <div class="skill-bar-container">
+          <div class="skill-label"><span>Node.js</span><span>82%</span></div>
+          <div class="skill-bar"><div tabindex="0" style="width:0%" class="skill-level" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div></div>
+        </div>
+        <div class="skill-bar-container">
+          <div class="skill-label"><span>CSS / Sass</span><span>75%</span></div>
+          <div class="skill-bar"><div tabindex="0" style="width:0%" class="skill-level" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div></div>
+        </div>
+        <div class="skill-bar-container">
+          <div class="skill-label"><span>Python</span><span>70%</span></div>
+          <div class="skill-bar"><div tabindex="0" style="width:0%" class="skill-level" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" role="progressbar"></div></div>
+        </div>
+      </div>
+    </section>
+&nbsp;
+&nbsp;
+
+    <section id="experience" aria-label="Work Experience">
+      <h3>Work Experience</h3>
+      <div>
+        <article class="exp-card" tabindex="0" aria-label="Senior Developer at TechCorp, January 2021 to present">
+          <h4>Senior Developer - TechCorp</h4>
+          <span>Jan 2021 - Present</span>
+          <p>Led frontend redesign of the flagship product, boosting engagement by 30%. Mentored junior devs and optimized backend scalability.</p>
+        </article>
+        <article class="exp-card" tabindex="0" aria-label="Full Stack Developer at DevSolutions, June 2017 to December 2020">
+          <h4>Full Stack Developer - DevSolutions</h4>
+          <span>Jun 2017 - Dec 2020</span>
+          <p>Built multiple client projects using React, Node.js, and Docker. Automated deployments with CI/CD pipelines.</p>
+        </article>
+        <article class="exp-card" tabindex="0" aria-label="Junior Developer at StartUpX, August 2015 to May 2017">
+          <h4>Junior Developer - StartUpX</h4>
+          <span>Aug 2015 - May 2017</span>
+          <p>Designed UI components and created API endpoints gaining essential experience in agile workflows.</p>
+        </article>
+      </div>
+    </section>
+&nbsp;
+&nbsp;
+
+    <section id="education" aria-label="Education">
+      <h3>Education</h3>
+      <div>
+        <article class="edu-item" tabindex="0" aria-label="Bachelor of Science in Computer Science, 2011 to 2015">
+          <h4>B.S. Computer Science - State University</h4>
+          <span>2011 - 2015</span>
+          <p>Graduated with honors, specialized in software engineering and data structures.</p>
+        </article>
+      </div>
+    </section>
+&nbsp;
+&nbsp;
+
+    <section id="projects" aria-label="Projects and Achievements">
+      <h3>Projects & Achievements</h3>
+      <div>
+        <article class="project-card" tabindex="0" aria-label="Project Alpha Open Source">
+          <h5>Project Alpha (Open Source)</h5>
+          <p>React component library with 10k+ npm downloads, used by 500+ devs globally.</p>
+        </article>
+        <article class="project-card" tabindex="0" aria-label="Hackathon Winner 2019">
+          <h5>Hackathon Winner 2019</h5>
+          <p>Won global hackathon with an AI-powered health monitoring app.</p>
+        </article>
+        <article class="project-card" tabindex="0" aria-label="Tech Blog Contributor">
+          <h5>Tech Blog</h5>
+          <p>Author of articles on frontend frameworks and performance best practices.</p>
+        </article>
+      </div>
+    </section>
+&nbsp;
+&nbsp;
+
+  </section>
+</div>
+&nbsp;
+&nbsp;
+
+<footer>
+  &copy; 2024 John Doe | <a href="mailto:john.doe@email.com">Contact me</a>
+</footer>
+&nbsp;
+&nbsp;
+
+<script>
+  // Animate skill bars on load
+  window.addEventListener('DOMContentLoaded', () => {
+    const skillLevels = [90, 88, 82, 75, 70];
+    const bars = document.querySelectorAll('.skill-level');
+    bars.forEach((bar, index) => {
+      setTimeout(() => {
+        bar.style.width = skillLevels[index] + '%';
+        bar.setAttribute('aria-valuenow', skillLevels[index]);
+      }, index * 400);
+    });
+  });
+</script>
+&nbsp;
+&nbsp;
+
+</body>
+</html>
+&nbsp;
+&nbsp;
